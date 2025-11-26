@@ -1,0 +1,306 @@
+use('ExtensionUR');
+db.dropDatabase();
+
+db.createCollection('ODS');
+db.createCollection('LineaInv');
+db.createCollection('TipoActividad');
+db.createCollection('FuenteActividad');
+db.createCollection('ProgramaAcademico');
+db.createCollection('Entidad');
+db.createCollection('Persona');
+db.createCollection('Actividad');
+db.createCollection('Presupuesto');
+db.createCollection('Participacion');
+
+
+db.ODS.insertMany([
+{ _id: 1, Nombre:"Fin de la pobreza"},
+{ _id: 2, Nombre:"Hambre cero"},
+{ _id: 3, Nombre:"Salud y bienestar"},
+{ _id: 4, Nombre:"Educación de calidad"},
+{ _id: 5, Nombre:"Igualdad de género"},
+{ _id: 6, Nombre:"Agua limpia y saneamiento"},
+{ _id: 7, Nombre:"Energía asequible y no contaminante"},
+{ _id: 8, Nombre:"Trabajo decente y crecimiento económico"},
+{ _id: 9, Nombre:"Industria, innovación e infraestructura"},
+{ _id: 10, Nombre:"Reducción de las desigualdades"}
+])
+
+
+db.LineaInv.insertMany([
+{ _id:1, Nombre:"Política Pública", idODS1:4, idODS2:8},
+{ _id:2, Nombre:"Desarrollo Territorial", idODS1:9, idODS2:10},
+{ _id:3, Nombre:"Educación Económica", idODS1:4, idODS2:1},
+{ _id:4, Nombre:"Innovación Social", idODS1:5, idODS2:8},
+{ _id:5, Nombre:"Finanzas Sostenibles", idODS1:8, idODS2:7}
+])
+
+db.TipoActividad.insertMany([
+{ _id:1, Tipo:"Consultoría"},
+{ _id:2, Tipo:"MOOC"},
+{ _id:3, Tipo:"Educación Continua"},
+{ _id:4, Tipo:"Evento"},
+{ _id:5, Tipo:"Voluntariado"}
+])
+
+
+db.FuenteActividad.insertMany([
+{ _id:1, NombreFuente:"Proyectos de Consultoría", Descripcion:"Actividades de consultoría externa e interna"},
+{ _id:2, NombreFuente:"Convenios", Descripcion:"Actividades desarrolladas bajo convenios institucionales"},
+{ _id:3, NombreFuente:"Educon", Descripcion:"Cursos de educación continua"},
+{ _id:4, NombreFuente:"MOOCs", Descripcion:"Cursos masivos en línea"},
+{ _id:5, NombreFuente:"Egresados", Descripcion:"Eventos y actividades para egresados"},
+{ _id:6, NombreFuente:"Laboratorio de Finanzas", Descripcion:"Actividades y talleres del laboratorio"},
+{ _id:7, NombreFuente:"Movilidad Global", Descripcion:"Intercambios y movilidad académica"},
+{ _id:8, NombreFuente:"Premios y Distinciones", Descripcion:"Reconocimientos y concursos"},
+{ _id:9, NombreFuente:"Eventos", Descripcion:"Seminarios, conferencias, talleres"},
+{ _id:10, NombreFuente:"Voluntariado", Descripcion:"Acciones de voluntariado universitario"}
+])
+
+db.ProgramaAcademico.insertMany([
+{ _id:1, NombrePrograma:'Economía', Facultad:'Facultad de Economía', Nivel:'Pregrado'},
+{ _id:2, NombrePrograma:'Finanzas y Comercio Internacional', Facultad:'Escuela de Administración', Nivel:'Pregrado'},
+{ _id:3, NombrePrograma:'Administración de Empresas', Facultad:'Escuela de Administración', Nivel:'Pregrado'},
+{ _id:4, NombrePrograma:'Contaduría Pública', Facultad:'Escuela de Administración', Nivel:'Pregrado'},
+{ _id:5, NombrePrograma:'Jurisprudencia', Facultad:'Facultad de Jurisprudencia', Nivel:'Pregrado'},
+{ _id:6, NombrePrograma:'Ciencia Política y Gobierno', Facultad:'Escuela de Ciencias Humanas', Nivel:'Pregrado'},
+{ _id:7, NombrePrograma:'Relaciones Internacionales', Facultad:'Escuela de Ciencias Humanas', Nivel:'Pregrado'},
+{ _id:8, NombrePrograma:'Periodismo y Opinión Pública', Facultad:'Escuela de Ciencias Humanas', Nivel:'Pregrado'},
+{ _id:9, NombrePrograma:'Historia', Facultad:'Escuela de Ciencias Humanas', Nivel:'Pregrado'},
+{ _id:10, NombrePrograma:'Psicología', Facultad:'Escuela de Medicina y Ciencias de la Salud', Nivel:'Pregrado'},
+{ _id:11, NombrePrograma:'Medicina', Facultad:'Escuela de Medicina y Ciencias de la Salud', Nivel:'Pregrado'},
+{ _id:12, NombrePrograma:'Fisioterapia', Facultad:'Escuela de Medicina y Ciencias de la Salud', Nivel:'Pregrado'},
+{ _id:13, NombrePrograma:'Terapia Ocupacional', Facultad:'Escuela de Medicina y Ciencias de la Salud', Nivel:'Pregrado'},
+{ _id:14, NombrePrograma:'Enfermería', Facultad:'Escuela de Medicina y Ciencias de la Salud', Nivel:'Pregrado'},
+{ _id:15, NombrePrograma:'Ingeniería Biomédica', Facultad:'Escuela de Ingeniería, Ciencia y Tecnología', Nivel:'Pregrado'},
+{ _id:16, NombrePrograma:'Ingeniería de Sistemas', Facultad:'Escuela de Ingeniería, Ciencia y Tecnología', Nivel:'Pregrado'},
+{ _id:17, NombrePrograma:'Ingeniería Industrial', Facultad:'Escuela de Ingeniería, Ciencia y Tecnología', Nivel:'Pregrado'},
+{ _id:18, NombrePrograma:'Gestión y Desarrollo Urbanos', Facultad:'Escuela de Ciencias Humanas', Nivel:'Pregrado'},
+
+{ _id:19, NombrePrograma:'Maestría en Economía', Facultad:'Facultad de Economía', Nivel:'Posgrado'},
+{ _id:20, NombrePrograma:'Maestría en Gestión Pública', Facultad:'Escuela de Gobierno', Nivel:'Posgrado'},
+{ _id:21, NombrePrograma:'Maestría en Estudios Políticos e Internacionales', Facultad:'Escuela de Ciencias Humanas', Nivel:'Posgrado'},
+{ _id:22, NombrePrograma:'Maestría en Evaluación de Políticas Públicas', Facultad:'Escuela de Gobierno', Nivel:'Posgrado'},
+{ _id:23, NombrePrograma:'Maestría en Analítica de Datos', Facultad:'Escuela de Ingeniería, Ciencia y Tecnología', Nivel:'Posgrado'},
+{ _id:24, NombrePrograma:'Maestría en Derecho Internacional', Facultad:'Facultad de Jurisprudencia', Nivel:'Posgrado'},
+{ _id:25, NombrePrograma:'Maestría en Epidemiología', Facultad:'Escuela de Medicina y Ciencias de la Salud', Nivel:'Posgrado'},
+{ _id:26, NombrePrograma:'Maestría en Desarrollo Territorial', Facultad:'Escuela de Ciencias Humanas', Nivel:'Posgrado'},
+{ _id:27, NombrePrograma:'Especialización en Finanzas', Facultad:'Escuela de Administración', Nivel:'Posgrado'},
+{ _id:28, NombrePrograma:'Especialización en Big Data y Analítica', Facultad:'Escuela de Ingeniería, Ciencia y Tecnología', Nivel:'Posgrado'},
+{ _id:29, NombrePrograma:'Especialización en Derecho Administrativo', Facultad:'Facultad de Jurisprudencia', Nivel:'Posgrado'},
+{ _id:30, NombrePrograma:'MBA - Maestría en Administración', Facultad:'Escuela de Administración', Nivel:'Posgrado'}
+]);
+
+db.Entidad.insertMany([
+{ _id:1, Nombre:'Banco de la República', Tipo:'Pública', Pais:'Colombia', Nacional:1, Contacto:'Carlos López', Email:'clopez@banrep.gov.co', Direccion:'Cra 7 #14-78', Telefono:'6013431111', Sector:'Financiero', Ciudad:'Bogotá'},
+{ _id:2, Nombre:'Ministerio de Educación Nacional', Tipo:'Pública', Pais:'Colombia', Nacional:1, Contacto:'Jorge Pérez', Email:'jperez@mineducacion.gov.co', Direccion:'Calle 26 #10-45', Telefono:'6012222800', Sector:'Educación', Ciudad:'Bogotá'},
+{ _id:3, Nombre:'Departamento Nacional de Planeación (DNP)', Tipo:'Pública', Pais:'Colombia', Nacional:1, Contacto:'Ana Camargo', Email:'acamargo@dnp.gov.co', Direccion:'Cl 26 #13-19', Telefono:'6013815000', Sector:'Planeación', Ciudad:'Bogotá'},
+{ _id:4, Nombre:'Alcaldía Mayor de Bogotá', Tipo:'Pública', Pais:'Colombia', Nacional:1, Contacto:'Diana Salazar', Email:'dsalazar@bogota.gov.co', Direccion:'Cra 8 #10-65', Telefono:'6013813000', Sector:'Gobierno', Ciudad:'Bogotá'},
+{ _id:5, Nombre:'SENA - Dirección General', Tipo:'Pública', Pais:'Colombia', Nacional:1, Contacto:'María Gómez', Email:'mgomez@sena.edu.co', Direccion:'Av. 68 #49A-47', Telefono:'6015461500', Sector:'Formación Técnica', Ciudad:'Bogotá'},
+
+{ _id:6, Nombre:'UNICEF Colombia', Tipo:'ONG', Pais:'Colombia', Nacional:1, Contacto:'Miguel Herrera', Email:'mherrera@unicef.org', Direccion:'Cra 9 #60-50', Telefono:'6012571254', Sector:'Niñez', Ciudad:'Bogotá'},
+{ _id:7, Nombre:'ACDI/VOCA', Tipo:'ONG', Pais:'Estados Unidos', Nacional:0, Contacto:'John Davis', Email:'jdavis@acdivoca.org', Direccion:'2400 N St NW', Telefono:'1202987456', Sector:'Desarrollo', Ciudad:'Washington D.C.'},
+{ _id:8, Nombre:'Fondo Acción', Tipo:'ONG', Pais:'Colombia', Nacional:1, Contacto:'Oscar Martínez', Email:'omartinez@fondoaccion.org', Direccion:'Cra 5 #26-20', Telefono:'6013472929', Sector:'Ambiental', Ciudad:'Bogotá'},
+{ _id:9, Nombre:'Fundación Corona', Tipo:'ONG', Pais:'Colombia', Nacional:1, Contacto:'Martín Rojas', Email:'mrojas@fundacioncorona.org', Direccion:'Cl 82 #10-33', Telefono:'6017440444', Sector:'Desarrollo Social', Ciudad:'Bogotá'},
+{ _id:10, Nombre:'Save the Children Colombia', Tipo:'ONG', Pais:'Colombia', Nacional:1, Contacto:'Lorena Suárez', Email:'lsuarez@savethechildren.org', Direccion:'Cl 95 # 14-35', Telefono:'6017440250', Sector:'Niñez', Ciudad:'Bogotá'},
+
+{ _id:11, Nombre:'ONU Mujeres', Tipo:'Multilateral', Pais:'Internacional', Nacional:0, Contacto:'Lucía Méndez', Email:'lmendez@unwomen.org', Direccion:'Av. Naciones Unidas 12', Telefono:'12125550000', Sector:'Equidad de Género', Ciudad:'Nueva York'},
+{ _id:12, Nombre:'Banco Mundial', Tipo:'Multilateral', Pais:'Estados Unidos', Nacional:0, Contacto:'Emily Smith', Email:'esmith@worldbank.org', Direccion:'1818 H St NW', Telefono:'12024731000', Sector:'Desarrollo Económico', Ciudad:'Washington D.C.'},
+{ _id:13, Nombre:'UNESCO', Tipo:'Multilateral', Pais:'Francia', Nacional:0, Contacto:'Claude Dupont', Email:'cdupont@unesco.org', Direccion:'7 Pl. de Fontenoy', Telefono:'331456789', Sector:'Educación y Cultura', Ciudad:'París'},
+
+{ _id:14, Nombre:'Cámara de Comercio de Bogotá', Tipo:'Privada', Pais:'Colombia', Nacional:1, Contacto:'Sandra Díaz', Email:'sdiaz@ccb.org.co', Direccion:'Cl 74 #11-68', Telefono:'6013830330', Sector:'Empresarial', Ciudad:'Bogotá'},
+{ _id:15, Nombre:'Google LATAM', Tipo:'Privada', Pais:'Estados Unidos', Nacional:0, Contacto:'Sara Lin', Email:'sara.lin@google.com', Direccion:'1600 Amphitheatre Pkwy', Telefono:'16504500000', Sector:'Tecnología', Ciudad:'Mountain View'},
+{ _id:16, Nombre:'Nestlé Global', Tipo:'Privada', Pais:'Suiza', Nacional:0, Contacto:'Stefan Müller', Email:'stefan.mueller@nestle.com', Direccion:'Avenue Nestlé 55', Telefono:'41219242424', Sector:'Alimentos', Ciudad:'Vevey'},
+{ _id:17, Nombre:'Nutresa', Tipo:'Privada', Pais:'Colombia', Nacional:1, Contacto:'Angela Torres', Email:'atorres@nutresa.com', Direccion:'Cra 52 #2-38', Telefono:'6044443600', Sector:'Alimentos', Ciudad:'Medellín'},
+{ _id:18, Nombre:'Ecopetrol', Tipo:'Privada', Pais:'Colombia', Nacional:1, Contacto:'Carlos Medina', Email:'cmedina@ecopetrol.com.co', Direccion:'Cl 37 # 8-43', Telefono:'6012344000', Sector:'Energía', Ciudad:'Bogotá'},
+
+{ _id:19, Nombre:'Universidad Nacional de Colombia', Tipo:'Pública', Pais:'Colombia', Nacional:1, Contacto:'Luis Ramírez', Email:'lramirez@unal.edu.co', Direccion:'Cra 30 #45-03', Telefono:'6013165000', Sector:'Educación Superior', Ciudad:'Bogotá'},
+{ _id:20, Nombre:'Fedesarrollo', Tipo:'Privada', Pais:'Colombia', Nacional:1, Contacto:'Carlos Torres', Email:'ctorres@fedesarrollo.org.co', Direccion:'Cl 78 #9-91', Telefono:'6013474111', Sector:'Investigación Económica', Ciudad:'Bogotá'}
+]);
+
+db.createView(
+    "vw_LineaInvODS",
+    "LineaInv",
+    [
+        {
+            $lookup: {
+                from: "ODS",
+                localField: "idODS1",
+                foreignField: "_id",
+                as: "ODS1"
+            }
+        },
+        { $unwind: "$ODS1" },
+        {
+            $lookup: {
+                from: "ODS",
+                localField: "idODS2",
+                foreignField: "_id",
+                as: "ODS2"
+            }
+        },
+        { $unwind: "$ODS2" },
+        {
+            $project: {
+                _id: 1,
+                NombreLinea: "$Nombre",
+                ODSPrincipal: "$ODS1.Nombre",
+                ODSSecundario: "$ODS2.Nombre"
+            }
+        }
+    ]
+);
+
+db.createView(
+    "vw_ParticipacionDetallada",
+    "Participacion",
+    [
+        {
+            $lookup: {
+                from: "Persona",
+                localField: "CCPersona",
+                foreignField: "_id",
+                as: "Persona"
+            }
+        },
+        { $unwind: "$Persona" },
+        {
+            $lookup: {
+                from: "Actividad",
+                localField: "idActividad",
+                foreignField: "_id",
+                as: "Actividad"
+            }
+        },
+        { $unwind: "$Actividad" },
+        {
+            $project: {
+                _id: 0,
+                idActividad: 1,
+                CCPersona: 1,
+                Rol: 1,
+                Horas: 1,
+                NombrePersona: "$Persona.Nombre",
+                ApellidoPersona: "$Persona.Apellido",
+                Actividad: "$Actividad.Nombre",
+                FechaInicio: "$Actividad.FechaInicio"
+            }
+        }
+    ]
+);
+
+db.createView(
+    "vw_ActividadFinanciera",
+    "Presupuesto",
+    [
+        {
+            $lookup: {
+                from: "Actividad",
+                localField: "idActividad",
+                foreignField: "_id",
+                as: "Actividad"
+            }
+        },
+        { $unwind: "$Actividad" },
+        {
+            $project: {
+                _id: 0,
+                idActividad: 1,
+                MontoPlaneado: 1,
+                MontoEjecutado: 1,
+                PorcentajeEjecutado: 1,
+                FuenteFinanciacion: 1,
+                NombreActividad: "$Actividad.Nombre",
+                Periodo: "$Actividad.Periodo",
+                Entidad: "$Actividad.idEntidad"
+            }
+        }
+    ]
+);
+
+db.createView(
+    "vw_ActividadDetallada",
+    "Actividad",
+    [
+        {
+            $lookup: {
+                from: "Entidad",
+                localField: "idEntidad",
+                foreignField: "_id",
+                as: "Entidad"
+            }
+        },
+        { $unwind: "$Entidad" },
+        {
+            $lookup: {
+                from: "LineaInv",
+                localField: "idLinea",
+                foreignField: "_id",
+                as: "LineaInv"
+            }
+        },
+        { $unwind: "$LineaInv" },
+        {
+            $lookup: {
+                from: "TipoActividad",
+                localField: "idTipoActividad",
+                foreignField: "_id",
+                as: "TipoActividad"
+            }
+        },
+        { $unwind: "$TipoActividad" },
+        {
+            $lookup: {
+                from: "FuenteActividad",
+                localField: "idFuente",
+                foreignField: "_id",
+                as: "FuenteActividad"
+            }
+        },
+        { $unwind: "$FuenteActividad" },
+        {
+            $project: {
+                _id: 1,
+                idFinanciero: 1,
+                Nombre: 1,
+                Modalidad: 1,
+                Periodo: 1,
+                FechaInicio: 1,
+                FechaFin: 1,
+                Avance: 1,
+                Entidad: "$Entidad.Nombre",
+                SectorEntidad: "$Entidad.Sector",
+                TipoActividad: "$TipoActividad.Tipo",
+                FuenteNombre: "$FuenteActividad.NombreFuente",
+                Linea: "$LineaInv.Nombre"
+            }
+        }
+    ]
+);
+
+db.createView(
+  "vw_estado_actividades",
+  "Actividad",
+  [
+    {
+      $project: {
+        _id: 1,
+        Nombre: 1,
+        Periodo: 1,
+        FechaInicio: 1,
+        FechaFin: 1,
+        Avance: 1,
+        EstadoActividad: {
+          $switch: {
+            branches: [
+              { case: { $eq: ["$Avance", 100] }, then: "Terminada" },
+              { case: { $lt: ["$FechaFin", "$$NOW"] }, then: "Retrasada" }
+            ],
+            default: "En Curso"
+          }
+        }
+      }
+    }
+  ]
+);
+
